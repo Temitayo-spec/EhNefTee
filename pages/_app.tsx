@@ -1,30 +1,30 @@
 import { GlobalStyle } from '@/components/General/GlobalStyle';
 import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
-import { createClient, configureChains, WagmiConfig } from 'wagmi';
-import { publicProvider } from 'wagmi/providers/public';
-import { SessionProvider } from 'next-auth/react';
-import { mainnet } from 'wagmi/chains';
-
-const { provider, webSocketProvider } = configureChains(
-  [mainnet],
-  [publicProvider()]
-);
-
-const client = createClient({
-  provider,
-  webSocketProvider,
-  autoConnect: true,
-});
+import 'regenerator-runtime/runtime';
+import { ThirdwebWeb3Provider } from '@3rdweb/hooks';
+import { connectors } from '@/utils/web3Config';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <WagmiConfig client={client}>
-      <SessionProvider session={pageProps.session} refetchInterval={0}>
-        <GlobalStyle />
+    <ThirdwebWeb3Provider
+      connectors={connectors}
+      supportedChainIds={[
+        1, // Mainnet
+        3, // Ropsten
+        4, // Rinkeby
+        5, // Goerli
+        42, // Kovan
+        100, // xDai
+        137, // Polygon
+        80001, // Mumbai
+      ]}
+    >
+      <>
         <Component {...pageProps} />
-      </SessionProvider>
-    </WagmiConfig>
+        <GlobalStyle />
+      </>
+    </ThirdwebWeb3Provider>
   );
 }
 

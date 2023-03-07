@@ -1,10 +1,15 @@
-
+import { useRouter } from 'next/router';
 import { SetStateAction, useState } from 'react';
 import styled from 'styled-components';
-import ConnectButton from '../General/ConnectButton';
 
-const Form = () => {
+type Props = {
+  handleAuth: any;
+};
+
+const Form = ({ handleAuth }: Props) => {
   const [walletAddress, setWalletAddress] = useState<string>('');
+
+  const { push } = useRouter();
 
   return (
     <Wrapper>
@@ -24,9 +29,12 @@ const Form = () => {
         </FormGroup>
 
         <ButtonContainer>
-          <Button type="submit">Connect</Button>
-
-          <ConnectButton />
+          <Button type="submit" onClick={() => push('/user/' + walletAddress)}>
+            Connect
+          </Button>
+          <Button type="button" onClick={() => handleAuth('injected')}>
+            Connect with MetaMask
+          </Button>
         </ButtonContainer>
       </FormContainer>
     </Wrapper>
@@ -117,5 +125,4 @@ const Button = styled.button`
   margin-bottom: 0.5rem;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
-
 `;
