@@ -154,6 +154,10 @@ export async function getServerSideProps(context: any) {
   const { id } = context.query;
   const chain = EvmChain.ETHEREUM;
 
+  await Moralis.start({
+    apiKey: process.env.NEXT_PUBLIC_MORALIS_API_KEY,
+  });
+
   const response = await Moralis.EvmApi.nft.getWalletNFTs({
     address: id,
     chain,
