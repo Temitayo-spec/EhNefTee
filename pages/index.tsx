@@ -16,7 +16,6 @@ export default function Home() {
     if (address) {
       cookies.set('walletAddress', address), { path: '/' };
       push('/user/' + address);
-      return;
     } else {
       push('/');
     }
