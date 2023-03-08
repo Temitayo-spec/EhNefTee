@@ -51,6 +51,13 @@ const Modal = ({ modalContent, setModal }: any) => {
             <span>Symbol:</span>
             {modalContent?.symbol}
           </p>
+          <a
+            href={`https://opensea.io/assets/ethereum/${modalContent?.token_address}/${modalContent?.token_id}`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Purchase Nft
+          </a>
 
           <h4>Click Outside to close Modal</h4>
         </RHS>
@@ -87,7 +94,7 @@ const ModalContent = styled.div`
 
   @media (max-width: 768px) {
     flex-direction: column;
-    height: 80%;
+    height: 90%;
   }
 `;
 
@@ -147,6 +154,38 @@ const RHS = styled.div`
     flex-direction: column;
     gap: 0.5em;
     margin: 0.5em 0;
+
+    @media (max-width: 768px) {
+      font-size: 0.9rem;
+    }
+  }
+
+  a {
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: #fff;
+    font-family: var(--primary-font);
+    display: flex;
+    justify-self: flex-end;
+    align-self: flex-end;
+    flex-direction: column;
+    gap: 0.5em;
+    margin: 0.5em 0;
+    text-decoration: none;
+    background: linear-gradient(90deg, #d69b24 0%, #fff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 10px #fff;
+    border:  0.5px solid #fff;
+    padding: 0.5em;
+    border-radius: 5px;
+
+    &:hover {
+      background: linear-gradient(90deg, #dc1f10 0%, #fff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 10px #fff;
+    }
 
     @media (max-width: 768px) {
       font-size: 0.9rem;

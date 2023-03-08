@@ -51,7 +51,7 @@ export default function NFTCollections({ nftCollections }: Props) {
             <>
               {JSON.parse(nftCollection?.metadata) && (
                 <Card
-                  key={nftCollection?.tokenId}
+                  key={nftCollection?.token_id}
                   nftCollection={nftCollection}
                   setModalContent={setModalContent}
                   setModal={setModal}
