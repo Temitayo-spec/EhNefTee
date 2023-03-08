@@ -33,6 +33,8 @@ const Form = () => {
               cookies.set('walletAddress', walletAddress);
               push('/user/' + walletAddress);
             }}
+            disabled={walletAddress.length < 30}
+            className={walletAddress.length < 30 ? 'disabled' : ''}
           >
             Connect
           </Button>
@@ -139,6 +141,11 @@ const Button = styled.button`
 
   &:hover {
     background: linear-gradient(90deg, #dc1f10 0%, #d69b24 100%);
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
   }
 `;
 

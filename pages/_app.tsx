@@ -4,6 +4,10 @@ import type { AppProps } from 'next/app';
 import { ThirdwebProvider } from '@thirdweb-dev/react';
 import Moralis from 'moralis';
 
+Moralis.start({
+  apiKey: process.env.NEXT_PUBLIC_MORALIS_API_KEY,
+});
+
 function MyApp({ Component, pageProps }: AppProps) {
   const activeChain = 'ethereum';
   return (
@@ -17,12 +21,3 @@ function MyApp({ Component, pageProps }: AppProps) {
 }
 
 export default MyApp;
-
-export async function getServerSideProps(context: any) {
-  await Moralis.start({
-    apiKey: process.env.NEXT_PUBLIC_MORALIS_API_KEY,
-  });
-  return {
-    props: {},
-  };
-}
