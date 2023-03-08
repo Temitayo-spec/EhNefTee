@@ -11,10 +11,60 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
-  background: linear-gradient(90deg, #0D0B08 0%, #0D0908 100%) !important;
+  background: linear-gradient(90deg, #0d0b08 0%, #0d0908 100%) !important;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+}
+
+.svg {
+  display: block;
+  width: 258px;
+  height: 258px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.tree {
+  fill: #e73e0d;
+}
+
+.circle-mask {
+  transform-origin: 50% 90%;
+  animation: scale 4.5s infinite ease-out;
+}
+
+@keyframes scale {
+  0%,
+  100% {
+    transform: scale(0);
+  }
+  7%,
+  90% {
+    transform: scale(0.4);
+  }
+  50% {
+    transform: scale(1);
+  }
+}
+
+.fade_in {
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: #fff;
+  z-index: 99999;
+}
+
+.fade_out {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
 }
