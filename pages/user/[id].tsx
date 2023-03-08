@@ -8,6 +8,7 @@ import Modal from '@/components/General/Modal';
 import { useState } from 'react';
 import { useDisconnect } from '@thirdweb-dev/react';
 import Cookie from 'universal-cookie';
+import { toast } from 'react-toastify';
 
 type Props = {
   nftCollections: any;
@@ -37,6 +38,7 @@ export default function NFTCollections({ nftCollections }: Props) {
           cookies.remove('walletAddress', {
             path: '/',
           });
+          toast.success('Wallet disconnected successfully!');
         }}
       >
         Logout

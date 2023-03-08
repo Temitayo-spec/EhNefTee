@@ -3,6 +3,7 @@ import { SetStateAction, useState } from 'react';
 import styled from 'styled-components';
 import { ConnectWallet } from '@thirdweb-dev/react';
 import Cookie from 'universal-cookie';
+import { toast } from 'react-toastify';
 
 const Form = () => {
   const [walletAddress, setWalletAddress] = useState<string>('');
@@ -32,6 +33,7 @@ const Form = () => {
             onClick={() => {
               cookies.set('walletAddress', walletAddress);
               push('/user/' + walletAddress);
+              toast.success('Wallet connected successfully!');
             }}
             disabled={walletAddress.length < 30}
             className={walletAddress.length < 30 ? 'disabled' : ''}

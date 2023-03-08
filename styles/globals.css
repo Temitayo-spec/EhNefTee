@@ -54,6 +54,7 @@ a {
 
 .fade_in {
   opacity: 1;
+  visibility: visible;
   transition: opacity 1s ease-in-out;
   position: fixed;
   top: 0;
@@ -66,5 +67,6 @@ a {
 
 .fade_out {
   opacity: 0;
+  visibility: hidden;
   transition: opacity 1s ease-in-out;
 }
