@@ -19,3 +19,12 @@ function MyApp({ Component, pageProps }: AppProps) {
 }
 
 export default MyApp;
+
+export async function getServerSideProps(context: any) {
+  await Moralis.start({
+    apiKey: process.env.NEXT_PUBLIC_MORALIS_API_KEY,
+  });
+  return {
+    props: {},
+  };
+}

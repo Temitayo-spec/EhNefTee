@@ -10,15 +10,16 @@ export default function Home() {
 
   const address = useAddress();
   const cookies = new Cookie();
+  const walletAddress = cookies.get('walletAddress');
 
   useEffect(() => {
-    if (address || cookies.get('walletAddress')) {
+    if (address || walletAddress) {
       cookies.set('walletAddress', address);
-      push('/user/' + address);
+      push('/user/' + walletAddress);
     } else {
       push('/');
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [address]);
 
   return (
