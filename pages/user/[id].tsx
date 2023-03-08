@@ -130,22 +130,6 @@ const CardWrapper = styled.div`
   }
 `;
 
-export async function getServerSideProps(context: any) {
-  const { id } = context.query;
-  const chain = EvmChain.ETHEREUM;
-
-  const response = await Moralis.EvmApi.nft.getWalletNFTs({
-    address: id,
-    chain,
-  });
-
-  return {
-    props: {
-      nftCollections: response.raw.result,
-    },
-  };
-}
-
 const Button = styled.button`
   background: #d69b24;
   border: none;
@@ -165,3 +149,21 @@ const Button = styled.button`
     background: #dc1f10;
   }
 `;
+
+export async function getServerSideProps(context: any) {
+  const { id } = context.query;
+  const chain = EvmChain.ETHEREUM;
+
+  const response = await Moralis.EvmApi.nft.getWalletNFTs({
+    address: id,
+    chain,
+  });
+
+  return {
+    props: {
+      nftCollections: response.raw.result,
+    },
+  };
+}
+
+
