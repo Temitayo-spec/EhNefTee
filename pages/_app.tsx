@@ -7,14 +7,12 @@ import Moralis from 'moralis';
 function MyApp({ Component, pageProps }: AppProps) {
   const activeChain = 'ethereum';
   return (
-    <ThirdwebProvider
-      activeChain={activeChain}
-    >
-      <>
+    <>
+      <GlobalStyle />
+      <ThirdwebProvider activeChain={activeChain}>
         <Component {...pageProps} />
-        <GlobalStyle />
-      </>
-    </ThirdwebProvider>
+      </ThirdwebProvider>
+    </>
   );
 }
 

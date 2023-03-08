@@ -14,7 +14,7 @@ export default function Home() {
 
   useEffect(() => {
     if (address || walletAddress) {
-      cookies.set('walletAddress', address);
+      cookies.set('walletAddress', address), { path: '/' };
       push('/user/' + walletAddress);
     } else {
       push('/');

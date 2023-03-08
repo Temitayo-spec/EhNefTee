@@ -34,7 +34,9 @@ export default function NFTCollections({ nftCollections }: Props) {
         onClick={() => {
           disconnect();
           push('/');
-          cookies.remove('walletAddress');
+          cookies.remove('walletAddress', {
+            path: '/',
+          });
         }}
       >
         Logout
