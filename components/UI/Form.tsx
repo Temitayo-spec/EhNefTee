@@ -1,14 +1,10 @@
 import { useRouter } from 'next/router';
 import { SetStateAction, useState } from 'react';
 import styled from 'styled-components';
+import { ConnectWallet } from '@thirdweb-dev/react';
 
-type Props = {
-  handleAuth: any;
-};
-
-const Form = ({ handleAuth }: Props) => {
+const Form = () => {
   const [walletAddress, setWalletAddress] = useState<string>('');
-
   const { push } = useRouter();
 
   return (
@@ -32,9 +28,7 @@ const Form = ({ handleAuth }: Props) => {
           <Button type="submit" onClick={() => push('/user/' + walletAddress)}>
             Connect
           </Button>
-          <Button type="button" onClick={() => handleAuth('injected')}>
-            Connect with MetaMask
-          </Button>
+          <ConnectWithMetaMask />
         </ButtonContainer>
       </FormContainer>
     </Wrapper>
@@ -113,6 +107,21 @@ const ButtonContainer = styled.div`
 `;
 
 const Button = styled.button`
+  padding: 0.5rem;
+  border: 1px solid var(--primary-color);
+  border-radius: 5px;
+  outline: none;
+  font-family: var(--secondary-font);
+  font-weight: 400;
+  font-size: 16px;
+  background: linear-gradient(90deg, #d69b24 0%, #dc1f10 100%);
+  color: #fff;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+`;
+
+const ConnectWithMetaMask = styled(ConnectWallet)`
   padding: 0.5rem;
   border: 1px solid var(--primary-color);
   border-radius: 5px;

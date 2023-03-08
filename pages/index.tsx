@@ -1,17 +1,16 @@
 import Head from 'next/head';
-import { useWeb3 } from '@3rdweb/hooks';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Form from '@/components/UI/Form';
+import { useAddress } from '@thirdweb-dev/react';
 
 export default function Home() {
-  const { chainId, connector, address, connectWallet, disconnectWallet } =
-    useWeb3();
+  const address = useAddress();
   const { push } = useRouter();
 
   useEffect(() => {
     if (!address) {
-      connectWallet('injected');
+      return;
     } else {
       push('/user/' + address);
     }
@@ -26,7 +25,7 @@ export default function Home() {
       </Head>
 
       <main>
-        <Form handleAuth={connectWallet} />
+        <Form />
       </main>
     </>
   );

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { truncateAddress } from './Truncate';
+import { truncateAddress } from '../../utils/Truncate';
 
 const Modal = ({ modalContent, setModal }: any) => {
   console.log(modalContent);

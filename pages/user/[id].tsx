@@ -3,10 +3,10 @@ import Moralis from 'moralis';
 import { EvmChain } from '@moralisweb3/common-evm-utils';
 import { useRouter } from 'next/router';
 import Card from '@/components/General/Card';
-import { truncateAddress } from '@/components/General/Truncate';
+import { truncateAddress } from '@/utils/Truncate';
 import Modal from '@/components/General/Modal';
 import { useState } from 'react';
-import { useWeb3 } from '@3rdweb/hooks';
+import { useDisconnect } from '@thirdweb-dev/react';
 
 type Props = {
   nftCollections: any;
@@ -19,8 +19,7 @@ export default function NFTCollections({ nftCollections }: Props) {
     query: { id },
     push,
   } = useRouter();
-
-  const { disconnectWallet } = useWeb3();
+  const disconnect = useDisconnect();
 
   return (
     <Container>
@@ -31,7 +30,7 @@ export default function NFTCollections({ nftCollections }: Props) {
       </p>
       <Button
         onClick={() => {
-          disconnectWallet();
+          disconnect();
           push('/');
         }}
       >
