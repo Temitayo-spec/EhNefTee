@@ -11,6 +11,8 @@
   "dependencies": {
     "@3rdweb/hooks": "^1.9.2",
     "@3rdweb/react": "^1.9.3",
+    "@moralisweb3/common-evm-utils": "^2.14.3",
+    "@moralisweb3/evm-utils": "^2.14.3",
     "@moralisweb3/next": "^2.14.3",
     "@types/node": "18.14.6",
     "@types/react": "18.0.28",
@@ -32,6 +34,7 @@
     "swr": "^2.1.0",
     "typescript": "4.9.5",
     "wagmi": "^0.12.1",
-    "web3": "^1.8.2"
+    "web3": "^1.8.2",
+    "web3-utils": "^1.8.2"
   }
 }

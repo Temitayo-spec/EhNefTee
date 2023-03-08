@@ -4,6 +4,8 @@ import type { AppProps } from 'next/app';
 import 'regenerator-runtime/runtime';
 import { ThirdwebWeb3Provider } from '@3rdweb/hooks';
 import { connectors } from '@/utils/web3Config';
+import Moralis from 'moralis';
+import { useEffect } from 'react';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -29,3 +31,12 @@ function MyApp({ Component, pageProps }: AppProps) {
 }
 
 export default MyApp;
+
+export async function getServerSideProps(context: any) {
+  await Moralis.start({
+    apiKey: process.env.NEXT_PUBLIC_MORALIS_API_KEY,
+  });
+  return {
+    props: {},
+  };
+}

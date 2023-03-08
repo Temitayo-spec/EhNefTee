@@ -3,7 +3,7 @@ import { createGlobalStyle, GlobalStyleComponent } from 'styled-components';
 export const GlobalStyle: GlobalStyleComponent<{}, {}> = createGlobalStyle`
     :root {
         // font family
-        --font-family: 'Poppins', sans-serif;
+        --primary-font: 'Poppins', sans-serif;
         --secondary-font: 'SPACE EXPLORER', sans-serif; 
         
         // color
