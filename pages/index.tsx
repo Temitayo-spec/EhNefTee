@@ -18,6 +18,7 @@ export default function Home() {
     } else {
       push('/');
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [address]);
 
   return (
