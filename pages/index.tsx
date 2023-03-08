@@ -13,14 +13,22 @@ export default function Home() {
   const walletAddress = cookies.get('walletAddress');
 
   useEffect(() => {
-    if (address || walletAddress) {
+    if (address) {
       cookies.set('walletAddress', address), { path: '/' };
+      push('/user/' + address);
+      return;
+    } else {
+      push('/');
+    }
+
+    if (walletAddress) {
+      cookies.set('walletAddress', walletAddress), { path: '/' };
       push('/user/' + walletAddress);
     } else {
       push('/');
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [address]);
+  }, [address, walletAddress]);
 
   return (
     <>
