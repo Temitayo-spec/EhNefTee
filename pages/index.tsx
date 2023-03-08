@@ -3,18 +3,23 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Form from '@/components/UI/Form';
 import { useAddress } from '@thirdweb-dev/react';
+import Cookie from 'universal-cookie';
 
 export default function Home() {
-  const address = useAddress();
   const { push } = useRouter();
 
+  const address = useAddress();
+  const cookies = new Cookie();
+
   useEffect(() => {
-    if (!address) {
-      return;
-    } else {
+    if (address || cookies.get('walletAddress')) {
+      cookies.set('walletAddress', address);
       push('/user/' + address);
+    } else {
+      push('/');
     }
   }, [address]);
+
   return (
     <>
       <Head>

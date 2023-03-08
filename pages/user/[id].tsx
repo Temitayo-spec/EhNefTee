@@ -7,6 +7,7 @@ import { truncateAddress } from '@/utils/Truncate';
 import Modal from '@/components/General/Modal';
 import { useState } from 'react';
 import { useDisconnect } from '@thirdweb-dev/react';
+import Cookie from 'universal-cookie';
 
 type Props = {
   nftCollections: any;
@@ -20,6 +21,7 @@ export default function NFTCollections({ nftCollections }: Props) {
     push,
   } = useRouter();
   const disconnect = useDisconnect();
+  const cookies = new Cookie();
 
   return (
     <Container>
@@ -32,6 +34,7 @@ export default function NFTCollections({ nftCollections }: Props) {
         onClick={() => {
           disconnect();
           push('/');
+          cookies.remove('walletAddress');
         }}
       >
         Logout
@@ -75,6 +78,13 @@ const Container = styled.div`
     background: linear-gradient(90deg, #d69b24 0%, #dc1f10 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+
+    @media (max-width: 768px) {
+      font-size: 30px;
+      text-align: left;
+      padding: 0.4em;
+      width: 80%;
+    }
   }
 
   & > p {
@@ -84,6 +94,13 @@ const Container = styled.div`
     text-align: center;
     color: #fff;
     letter-spacing: 2px;
+
+    @media (max-width: 768px) {
+      font-size: 10px;
+      text-align: left;
+      padding: 0.4em;
+      width: 80%;
+    }
   }
 `;
 
@@ -102,6 +119,14 @@ const CardWrapper = styled.div`
     text-align: center;
     color: #fff;
     letter-spacing: 2px;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: repeat(1, 1fr);
   }
 `;
 

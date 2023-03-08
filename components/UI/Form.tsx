@@ -2,10 +2,12 @@ import { useRouter } from 'next/router';
 import { SetStateAction, useState } from 'react';
 import styled from 'styled-components';
 import { ConnectWallet } from '@thirdweb-dev/react';
+import Cookie from 'universal-cookie';
 
 const Form = () => {
   const [walletAddress, setWalletAddress] = useState<string>('');
   const { push } = useRouter();
+  const cookies = new Cookie();
 
   return (
     <Wrapper>
@@ -25,7 +27,13 @@ const Form = () => {
         </FormGroup>
 
         <ButtonContainer>
-          <Button type="submit" onClick={() => push('/user/' + walletAddress)}>
+          <Button
+            type="button"
+            onClick={() => {
+              cookies.set('walletAddress', walletAddress);
+              push('/user/' + walletAddress);
+            }}
+          >
             Connect
           </Button>
           <ConnectWithMetaMask />
@@ -56,6 +64,10 @@ const H1 = styled.h1`
   -webkit-text-fill-color: transparent;
   background-clip: text;
   margin-bottom: 2rem;
+
+  @media (max-width: 768px) {
+    font-size: 30px;
+  }
 `;
 
 const FormContainer = styled.form`
@@ -66,7 +78,7 @@ const FormContainer = styled.form`
   margin: 0 auto;
 
   @media (max-width: 768px) {
-    width: 100%;
+    width: 90%;
   }
 `;
 
@@ -104,10 +116,15 @@ const ButtonContainer = styled.div`
   gap: 1rem;
   width: 100%;
   margin-top: 1rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 `;
 
 const Button = styled.button`
-  padding: 0.5rem;
+  padding: 1rem;
   border: 1px solid var(--primary-color);
   border-radius: 5px;
   outline: none;
@@ -119,10 +136,13 @@ const Button = styled.button`
   margin-bottom: 0.5rem;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background: linear-gradient(90deg, #dc1f10 0%, #d69b24 100%);
+  }
 `;
 
 const ConnectWithMetaMask = styled(ConnectWallet)`
-  padding: 0.5rem;
   border: 1px solid var(--primary-color);
   border-radius: 5px;
   outline: none;
@@ -134,4 +154,12 @@ const ConnectWithMetaMask = styled(ConnectWallet)`
   margin-bottom: 0.5rem;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background: linear-gradient(90deg, #dc1f10 0%, #d69b24 100%);
+  }
+
+  @media (max-width: 768px) {
+    padding: 0.5rem;
+  }
 `;

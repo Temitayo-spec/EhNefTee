@@ -84,6 +84,11 @@ const ModalContent = styled.div`
   justify-content: center;
   align-items: center;
   gap: 1rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    height: 80%;
+  }
 `;
 
 const CardImage = styled.img`
@@ -126,6 +131,11 @@ const RHS = styled.div`
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: 0 0 10px #fff;
+
+    @media (max-width: 768px) {
+      margin-top: 50px;
+      font-size: 1.5rem;
+    }
   }
 
   p {
@@ -137,6 +147,10 @@ const RHS = styled.div`
     flex-direction: column;
     gap: 0.5em;
     margin: 0.5em 0;
+
+    @media (max-width: 768px) {
+      font-size: 0.9rem;
+    }
   }
 
   overflow: auto;
@@ -161,6 +175,10 @@ const RHS = styled.div`
     font-size: 1.2rem;
     color: #fff;
     font-family: var(--primary-font);
+
+    @media (max-width: 768px) {
+      font-size: 0.6rem;
+    }
   }
 
   h4 {
@@ -173,5 +191,9 @@ const RHS = styled.div`
     gap: 0.5em;
     margin: 0.5em 0;
     text-align: center;
+
+    @media (max-width: 768px) {
+      font-size: 0.9rem;
+    }
   }
 `;

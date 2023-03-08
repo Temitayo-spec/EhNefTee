@@ -1,12 +1,27 @@
+import { useEffect } from 'react';
 import { GlobalStyle } from '@/components/General/GlobalStyle';
 import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
-import 'regenerator-runtime/runtime';
 import { ThirdwebProvider } from '@thirdweb-dev/react';
 import Moralis from 'moralis';
+import { useRouter } from 'next/router';
+import { useAddress } from '@thirdweb-dev/react';
+import Cookie from 'universal-cookie';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const activeChain = 'ethereum';
+  const { push } = useRouter();
+  const address = useAddress();
+  const cookies = new Cookie();
+
+  useEffect(() => {
+    if (address || cookies.get('walletAddress')) {
+      cookies.set('walletAddress', address);
+      push('/user/' + address);
+    } else {
+      push('/');
+    }
+  }, [address]);
 
   return (
     <ThirdwebProvider
