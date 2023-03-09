@@ -18,6 +18,9 @@ export default function Home() {
       push('/user/' + address);
     } else {
       push('/');
+      cookies.remove('walletAddress', {
+        path: '/',
+      });
     }
 
     if (walletAddress) {
@@ -25,6 +28,9 @@ export default function Home() {
       push('/user/' + walletAddress);
     } else {
       push('/');
+      cookies.remove('walletAddress', {
+        path: '/',
+      });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [address, walletAddress]);

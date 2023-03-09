@@ -35,9 +35,7 @@ export default function NFTCollections({ nftCollections }: Props) {
         onClick={() => {
           disconnect();
           push('/');
-          cookies.remove('walletAddress', {
-            path: '/',
-          });
+          cookies.remove('walletAddress');
           toast.success('Wallet disconnected successfully!');
         }}
       >

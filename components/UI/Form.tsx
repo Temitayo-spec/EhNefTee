@@ -70,7 +70,8 @@ const Wrapper = styled.div`
     color: #fff;
 
     @media (max-width: 768px) {
-      font-size: 16px;
+      font-size: 14px;
+      font-weight: 300;
     }
   }
 `;
