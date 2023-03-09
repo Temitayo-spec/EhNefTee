@@ -80,6 +80,7 @@ const Container = styled.div`
     font-size: 40px;
     text-align: center;
     background: linear-gradient(90deg, #d69b24 0%, #dc1f10 100%);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 

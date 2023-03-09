@@ -93,9 +93,6 @@ const TextContainer = styled.div`
     ),
     linear-gradient(0deg, rgba(228, 90, 21, 0.1), rgba(228, 90, 21, 0.1));
   border-radius: 10px;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
 
   h3 {
     font-family: var(--secondary-font);
@@ -103,8 +100,12 @@ const TextContainer = styled.div`
     font-size: 20px;
     text-align: center;
     background: linear-gradient(90deg, #d69b24 0%, #dc1f10 100%);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
+    text-overflow: ellipsis;
   }
   p {
     font-family: var(--primary-font);

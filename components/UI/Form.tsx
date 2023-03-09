@@ -13,6 +13,10 @@ const Form = () => {
   return (
     <Wrapper>
       <H1>Connect Your Wallet</H1>
+      <p>
+        Connect your wallet to view your NFTs. If you don&apos;t have a wallet,
+        you can use MetaMask.
+      </p>
       <FormContainer>
         <FormGroup>
           <Label htmlFor="wallet address">Wallet Address</Label>
@@ -56,6 +60,19 @@ const Wrapper = styled.div`
   justify-content: center;
   width: 100%;
   height: 100vh;
+
+  p {
+    font-family: var(--secondary-font);
+    font-weight: 400;
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #fff;
+
+    @media (max-width: 768px) {
+      font-size: 16px;
+    }
+  }
 `;
 
 const H1 = styled.h1`
