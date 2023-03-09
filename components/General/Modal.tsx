@@ -27,6 +27,13 @@ const Modal = ({ modalContent, setModal }: any) => {
             src={cardImage}
             alt={JSON.parse(modalContent?.metadata)?.name}
           />
+          <CloseButton
+            onClick={() => {
+              setModal(false);
+            }}
+          >
+            X
+          </CloseButton>
         </LHS>
 
         <RHS>
@@ -81,6 +88,35 @@ const ModalWrapper = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 100;
+`;
+
+const CloseButton = styled.div`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #333;
+  color: #fff;
+  height: 3em;
+  width: 3em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-family: var(--secondary-font);
+  border-radius: 50%;
+  cursor: pointer;
+
+  &:hover {
+    background: #000;
+  }
+
+  @media (max-width: 768px) {
+    top: 5px;
+    right: 5px;
+    height: 2em;
+    width: 2em;
+    font-size: 1rem;
+  }
 `;
 
 const ModalContent = styled.div`
